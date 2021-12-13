@@ -1,0 +1,7 @@
+@import "../_mixins.scss";
+@import "../_colors.scss";
+
+.home{display: flex; padding: 90px 47px 0 48px; gap: 125px; height: calc(100% - 113px);
+    @include mq(1100){gap: 50px; padding: 0 0 0 0;}
+    @include mq(720){flex-direction: column; height: auto; gap:30px;}
+}

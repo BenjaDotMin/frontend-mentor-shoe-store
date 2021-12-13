@@ -1,0 +1,58 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin border-side($side, $px: 1, $color: #000) {
+    border-#{$side}: #{$px}px solid $color;
+}
+
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+
+@mixin transition($speed) {
+    -webkit-transition: $speed;
+    -moz-transition: $speed;
+    transition: $speed;
+}
+
+@mixin placeholder($fontsize, $color: null ) {
+    &::-webkit-input-placeholder {
+        font-size: $fontsize, $color;
+    }
+
+    &::-moz-placeholder {
+        font-size: $fontsize, $color;
+    }
+
+    &:-ms-input-placeholder {
+        font-size: $fontsize, $color;
+    }
+
+    &:-moz-placeholder {
+        font-size: $fontsize, $color;
+    }
+}
+
+@mixin flex($align:flex-start, $justify:flex-start, $direction:row, $wrap:nowrap) {      
+    display: -ms-flexbox; display: -webkit-flex; display: flex;
+    align-items: $align; -webkit-align-items: $align;    
+    justify-content: $justify; -webkit-justify-content: $justify;
+    flex-direction: $direction; -webkit-flex-direction: $direction;
+    flex-wrap: $wrap;-webkit-flex-wrap: $wrap; 
+}
+
+@mixin font($s:1.6, $lh:24, $ls:1, $c:$black, $w:400, $f:"Kumbh Sans"){
+    font-size: $s+rem; line-height: $lh+px; letter-spacing: $ls+px; color: $c; font-weight:$w; font-family: $f;
+}
+
+//create mq mixin
+@mixin mq($size){ 
+    @media(max-width: $size + px){@content};
+}
+

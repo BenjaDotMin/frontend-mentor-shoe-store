@@ -1,0 +1,33 @@
+@import "./mixins";
+@import "./_colors.scss";
+
+.product-cta{height: 56px; margin-top: 34px;
+    .product-cta__amounts{display: flex; align-items: center; height: 100%; gap:16px;
+        .product-cta__amount{display: flex; align-items: center; flex: 0 0 157px; height: 100%; background-color: $LightBlue; border-radius: 10px; 
+            span{-padding: 2px 0 0 0; background-color: transparent; width: 100%; @include font(1.6, 16, 0, $black, 700); text-align: center; margin:0 10px;
+                &:focus-visible{outline: none;}
+            }
+            button{background-color: transparent; padding: 0 16px;
+                img{max-width: none; transition: 0.2s opacity; will-change: opacity;}
+                &:hover{
+                    img{opacity: 0.5;}
+                }
+            }   
+        }    
+        .add-button{@include font(1.6, 16, 0, white, 700); background-color: $orange; border-radius: 10px; display: flex; align-items: center; flex:1; justify-content: center; padding: 2px 22px 0 20px; transition: 0.2s background-color; will-change: background-color;
+            svg{margin: -2px 13px 0 0; transform: scale(0.8);
+                path{fill: $white;}
+            }
+            &:hover{background-color: #FFAB6A;}
+        }   
+    }
+    button, input{border: none; height: 100%; padding: 0;}   
+    button{cursor: pointer;} 
+
+    @include mq(820){margin-top: 25px; height: auto;
+        .product-cta__amounts{flex-direction: column; height: auto;
+            .product-cta__amount, .add-button{flex:none; width: 100%; height: 56px;}
+            .add-button{box-shadow: 0px 20px 50px -20px #FF7E1B;}
+        }
+    }
+}

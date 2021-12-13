@@ -1,0 +1,57 @@
+@import "./mixins";
+@import "./_colors.scss";
+
+.product-carousels{max-width: 445px; display: flex;flex-direction: column;
+    .product-carousel-main{border-radius: 15px; overflow: hidden; width: 100%;
+        .swiper-slide{cursor: pointer;
+            img{border-radius: 15px;}
+        }        
+    }
+    .product-carousel-thumbs{margin-top: 30px; padding:2px; margin: 30px -2px 0 -2px;
+        .swiper-wrapper{justify-content: space-between; 
+            .swiper-slide{max-width: 88px; height: 88px; cursor: pointer; border-radius: 10px; outline:2px solid transparent; overflow: hidden; transition: outline-color 0.2s; will-change: outline-color;
+                img{height: 100%; transition: opacity 0.2s; will-change: opacity;}
+                &.swiper-slide-thumb-active{outline-color: $orange; cursor: default;
+                    img{opacity: 0.25;}
+                } 
+                &:hover{
+                    img{opacity: 0.25; transition: opacity 0.5s; will-change: opacity;}
+                }               
+            }
+        }
+    }
+    .swiper-button-prev, .swiper-button-next{min-height: 56px; min-width: 56px; display: none; transform: translateY(-100%); cursor: pointer;
+        &:after{content: none;}
+        &:before{content:""; height: 100%; width: 100%; background-color: white; border-radius: 100%;}
+    }
+    .swiper-button-prev{left: 0;
+        &:before{background: url("../images/icons/icon-previous.svg") no-repeat 20px center white;}
+        &:hover{&:before{background: url("../images/icons/icon-previous-orange.svg") no-repeat 20px center white;}}
+    }
+    .swiper-button-next{right:0;
+        &:before{background: url("../images/icons/icon-next.svg") no-repeat 22px center white;}
+        &:hover{&:before{background: url("../images/icons/icon-next-orange.svg") no-repeat 22px center white;}}
+    }
+    @include mq(1100){justify-content: center;}
+    @include mq(930){max-width: 320px;
+        .product-carousel-thumbs{
+            .swiper-wrapper .swiper-slide{max-width: 70px; height: 70px;}
+        }
+    }
+    @include mq(720){max-width: none; position: relative;
+        .product-carousel-main{border-radius: 0;
+            .swiper-slide{
+                img{border-radius: 0;}               
+            }        
+        }
+        .product-carousel-thumbs{display: none;}
+        .swiper-button-prev, .swiper-button-next{display: flex; transform: translateY(-50%);}
+        .swiper-button-prev{left:16px;}
+        .swiper-button-next{right: 16px;}
+    }
+    @include mq(500){
+        .swiper-button-prev, .swiper-button-next{min-height: 40px; min-width: 40px; max-height: 40px;}
+        .swiper-button-prev{&:before{background: url("../images/icons/icon-previous.svg") no-repeat 12px center white;}}
+        .swiper-button-next{&:before{background: url("../images/icons/icon-next.svg") no-repeat 16px center white;}}
+    }
+}

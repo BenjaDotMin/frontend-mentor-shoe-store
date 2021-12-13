@@ -1,0 +1,37 @@
+@import "./mixins";
+@import "./_colors.scss";
+
+.cart-popup{opacity: 0; pointer-events: none; transform: translateY(5px); transition: transform 0.2s, opacity 0.2s ease-out; will-change: transform, opacity; width:360px; background-color: white; border-radius: 10px; position: absolute; right: -76px; bottom: -238px; box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.503143);
+    .cart-popup__header{height: 67px; border-bottom: 1px solid #E4E9F2; padding: 17px 24px 0px;
+        label{@include font(1.6, 24, 0, $black, 700);}
+    }
+    .cart-popup__body{padding:24px 24px 32px; min-height: 190px; display: flex; align-items: center; justify-content: center;
+        .cart-popup__product{display: none; align-items: center; gap: 16px; margin-bottom: 27px; justify-content: space-between;
+            p{@include font(1.6, 27, 0, $grayishBlue);}
+            span{@include font(1.6, 24, 0, $grayishBlue);
+                b{color: $black;}
+                @include mq(400){font-size: 1.2rem; line-height: 16px;}
+            }
+            img{width: 50px; height: 50px; border-radius: 4px;
+                &.delete-product{width: 14px; height: 16px; cursor: pointer;}
+            } 
+            @include mq(400){justify-content: flex-start; gap:12px;
+                p{font-size: 1.2rem; line-height: 16px; margin-bottom: 5px;}
+                .delete-product{margin-left: auto;}
+            }                  
+        }
+        button{@include font(1.6, 16, 0, white, 700); cursor: pointer; width:100%; height: 56px; background-color: $orange; border-radius: 10px; display: none; align-items: center; flex:1; justify-content: center; transition: 0.2s background-color; will-change: background-color; border: none;
+            &:hover{background-color: #FFAB6A;}
+        }
+        .no-product-message{@include font(1.6, 26, 0, $grayishBlue, 700);}  
+        &.--has-product{display: block;
+            .cart-popup__product, button{display: flex;}
+            .no-product-message{display: none;}  
+        }
+    }
+    &.active{opacity: 1; pointer-events: all; transform: translateY(0px);}
+
+    @include mq(1310){right: 0; z-index: 15;}
+    @include mq(720){right: 7px; bottom: -260px;}
+    @include mq(375){left:7px; width: auto;}
+}
